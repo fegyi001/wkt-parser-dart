@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:test/test.dart';
-import 'package:wkt_parser/wkt-parser-dart.dart' as wkt_parser;
+import 'package:wkt_parser/wkt_parser.dart' as wkt_parser;
 
 import './data/wkt_strings.dart' as test_data;
 

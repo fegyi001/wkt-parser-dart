@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:wkt_parser/wkt-parser-dart.dart' as wkt_parser;
+import 'package:wkt_parser/wkt_parser.dart' as wkt_parser;
 
 void main() {
   var wkt =
