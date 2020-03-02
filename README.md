@@ -26,6 +26,87 @@ void main() {
 }
 ```
 
+The result should be (with JSON encode):
+
+```json
+{
+  "type": "PROJCS",
+  "name": "HD72 / EOV",
+  "GEOGCS": {
+    "name": "HD72",
+    "DATUM": {
+      "name": "Hungarian_Datum_1972",
+      "SPHEROID": {
+        "name": "GRS 1967",
+        "a": 6378160.0,
+        "rf": 298.247167427,
+        "AUTHORITY": {
+          "EPSG": "7036"
+        }
+      },
+      "TOWGS84": [52.17, -71.82, -14.9, 0.0, 0.0, 0.0, 0.0],
+      "AUTHORITY": {
+        "EPSG": "6237"
+      }
+    },
+    "PRIMEM": {
+      "name": "greenwich",
+      "convert": 0.0,
+      "AUTHORITY": {
+        "EPSG": "8901"
+      }
+    },
+    "UNIT": {
+      "name": "degree",
+      "convert": 0.0174532925199433,
+      "AUTHORITY": {
+        "EPSG": "9122"
+      }
+    },
+    "AUTHORITY": {
+      "EPSG": "4237"
+    }
+  },
+  "PROJECTION": "Hotine_Oblique_Mercator_Azimuth_Center",
+  "latitude_of_center": 47.14439372222222,
+  "longitude_of_center": 19.04857177777778,
+  "azimuth": 90.0,
+  "rectified_grid_angle": 90.0,
+  "scale_factor": 0.99993,
+  "false_easting": 650000.0,
+  "false_northing": 200000.0,
+  "UNIT": {
+    "name": "metre",
+    "convert": 1.0,
+    "AUTHORITY": {
+      "EPSG": "9001"
+    }
+  },
+  "AXIS": [
+    ["Y", "EAST"],
+    ["X", "NORTH"]
+  ],
+  "AUTHORITY": {
+    "EPSG": "23700"
+  },
+  "projName": "Hotine_Oblique_Mercator_Azimuth_Center",
+  "units": "meter",
+  "to_meter": 1.0,
+  "datumCode": "hungarian_datum_1972",
+  "ellps": "GRS 1967",
+  "a": 6378160.0,
+  "rf": 298.247167427,
+  "datum_params": [52.17, -71.82, -14.9, 0.0, 0.0, 0.0, 0.0],
+  "k0": 0.99993,
+  "lat0": 0.8228248943093227,
+  "longc": 0.3324602953246919,
+  "x0": 650000.0,
+  "y0": 200000.0,
+  "alpha": 1.5707963267948966,
+  "srsCode": "HD72 / EOV"
+}
+```
+
 ## Author
 
 Wkt-parser-dart was ported from proj4js/wkt-parser by [Gergely Padányi-Gulyás](https://twitter.com/fegyi001) (@fegyi001) at [Ulyssys Ltd](https://www.ulyssys.hu/index_en.html), Budapest, Hungary.
