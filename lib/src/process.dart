@@ -1,9 +1,9 @@
-dynamic reduceFn(newObj, item) {
+Map<dynamic, dynamic> reduceFn(newObj, item) {
   sExpr(item, newObj);
   return newObj;
 }
 
-dynamic mapit(obj, key, List<dynamic> value) {
+void mapit(obj, key, List<dynamic> value) {
   if (key is List<dynamic>) {
     value.insert(0, key);
     key = null;
@@ -15,7 +15,7 @@ dynamic mapit(obj, key, List<dynamic> value) {
   }
 }
 
-dynamic sExpr(dynamic value, Map<dynamic, dynamic> obj) {
+void sExpr(dynamic value, Map<dynamic, dynamic> obj) {
   if (!(value is List<dynamic>)) {
     obj[value] = true;
     return;
