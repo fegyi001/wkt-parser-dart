@@ -13,6 +13,8 @@ dependencies:
 
 ## Using
 
+You can convert any **OGC WKT / ESRI WKT definition string** copied from [epsg.io](http://epsg.io/) into a `Map<dynamic,dynamic>` format which then can be further converted into JSON to be fully interoperable with any programming languages. This example uses the [OGC WKT of EPSG:23700](http://epsg.io/23700.wkt).
+
 ```dart
 import 'dart:convert';
 
