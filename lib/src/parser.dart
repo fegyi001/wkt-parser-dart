@@ -33,7 +33,7 @@ class Parser {
     }
   }
 
-  static dynamic parseString(String txt) {
+  static List<dynamic> parseString(String txt) {
     var parser = Parser(txt);
     return parser._output();
   }
