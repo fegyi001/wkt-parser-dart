@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3 - 2020-03-04
+
+- Add missing params to ProjWKT
+
 ## 1.0.2 - 2020-03-04
 
 - Rename WKT to ProjWKT
@@ -9,7 +13,7 @@
 
 - Class WKT with static parse() method
 - Getters for WKT object parameters
-  
+
 ## 1.0.0 - 2020-03-02
 
 - Initial version

@@ -1,6 +1,6 @@
 name: wkt_parser
 description: Wkt-parser-dart is a Dart version of proj4js/wkt-parser.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/fegyi001/wkt-parser-dart
 
 environment:
