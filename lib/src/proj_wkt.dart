@@ -1,10 +1,6 @@
 import 'dart:convert';
 
-import 'package:wkt_parser/src/clean_wkt.dart' as clean_wkt;
-import 'package:wkt_parser/src/parser.dart';
-import 'package:wkt_parser/src/process.dart' as process;
-
-class WKT {
+class ProjWKT {
   // All parameters (also without getters)
   Map<dynamic, dynamic> map;
 
@@ -41,18 +37,5 @@ class WKT {
   double get alpha => map['alpha'];
   String get srsCode => map['srsCode'];
 
-  WKT(Map<dynamic, dynamic> parsedWkt) : map = parsedWkt;
-
-  static WKT parse(String wkt) {
-    var lisp = Parser.parseString(wkt);
-    var type = lisp.removeAt(0).toString();
-    var name = lisp.removeAt(0).toString();
-    lisp.insert(0, ['name', name]);
-    lisp.insert(0, ['type', type]);
-    var obj = {};
-    process.sExpr(lisp, obj);
-    clean_wkt.cleanWKT(obj);
-    var wktObj = WKT(obj);
-    return wktObj;
-  }
+  ProjWKT(Map<dynamic, dynamic> parsedWkt) : map = parsedWkt;
 }

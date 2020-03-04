@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
-import 'package:wkt_parser/wkt_parser.dart';
+import 'package:wkt_parser/wkt_parser.dart' as wkt_parser;
 
 import './data/wkt_strings.dart' as test_data;
 
 void main() {
   group('Parser test', () {
     test('NZGD49 / New Zealand Map Grid [OGC WKT]', () {
-      var output = WKT.parse(test_data.testData[0]);
+      var output = wkt_parser.parseWKT(test_data.testData[0]);
       expect(
         output.toString(),
         equals(
@@ -14,7 +14,7 @@ void main() {
       );
     });
     test('NAD83 / Massachusetts Mainland [OGC WKT]', () {
-      var output = WKT.parse(test_data.testData[1]);
+      var output = wkt_parser.parseWKT(test_data.testData[1]);
       expect(
         output.toString(),
         equals(
@@ -22,7 +22,7 @@ void main() {
       );
     });
     test('HD72 / EOV [OGC WKT]', () {
-      var output = WKT.parse(test_data.testData[2]);
+      var output = wkt_parser.parseWKT(test_data.testData[2]);
       expect(
         output.toString(),
         equals(
@@ -30,7 +30,7 @@ void main() {
       );
     });
     test('HD72 / EOV [ESRI WKT]', () {
-      var output = WKT.parse(test_data.testData[3]);
+      var output = wkt_parser.parseWKT(test_data.testData[3]);
       expect(
         output.toString(),
         equals(

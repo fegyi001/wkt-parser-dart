@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2 - 2020-03-04
+
+- Rename WKT to ProjWKT
+- Rename parse() to parseWKT()
+
 ## 1.0.1 - 2020-03-03
 
 - Class WKT with static parse() method
