@@ -112,4 +112,4 @@ The result should be (with JSON encode):
 
 ## Author
 
-Wkt-parser-dart was ported from proj4js/wkt-parser by [Gergely Padányi-Gulyás](https://twitter.com/fegyi001) (@fegyi001) at [Ulyssys Ltd](https://www.ulyssys.hu/index_en.html), Budapest, Hungary.
+Wkt-parser-dart was ported from proj4js/wkt-parser by [Gergely Padányi-Gulyás (@fegyi001)](https://twitter.com/fegyi001) at [Ulyssys Ltd](https://www.ulyssys.hu/index_en.html), Budapest, Hungary.
