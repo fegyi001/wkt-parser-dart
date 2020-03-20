@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.7 - 2020-03-20
+
+- Merge fix
+
 ## 1.0.6 - 2020-03-20
 
 - Rename example file for dart pub to find it
