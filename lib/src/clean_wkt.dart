@@ -40,9 +40,9 @@ void cleanWKT(Map<dynamic, dynamic> wkt) {
   }
   if (wkt['AXIS'] != null) {
     var axisOrder = '';
-    for (var i = 0; i < wkt['AXIS'].toString().length; i++) {
-      var axis = wkt['AXIS'].toString()[i];
-      var descriptor = axis[0].toString().toLowerCase();
+    for (var i = 0; i < wkt['AXIS'].length; i++) {
+      var axis = wkt['AXIS'][i];
+      var descriptor = axis[0].toLowerCase();
       if (descriptor.contains('north')) {
         axisOrder += 'n';
       } else if (descriptor.contains('south')) {
@@ -57,7 +57,7 @@ void cleanWKT(Map<dynamic, dynamic> wkt) {
       axisOrder += 'u';
     }
     if (axisOrder.length == 3) {
-      wkt['AXIS'] = axisOrder;
+      wkt['axis'] = axisOrder;
     }
   }
   if (wkt['UNIT'] != null) {
@@ -192,13 +192,13 @@ void cleanWKT(Map<dynamic, dynamic> wkt) {
     ['srsCode', 'name']
   ];
   list.forEach((l) => _renamer(l));
-  if (!(wkt['long0'] != null) &&
+  if (wkt['long0'] == null &&
       wkt['longc'] != null &&
       (wkt['projName'] == 'Albers_Conic_Equal_Area' ||
           wkt['projName'] == 'Lambert_Azimuthal_Equal_Area')) {
     wkt['long0'] = wkt['longc'];
   }
-  if (!(wkt['lat_ts'] != null) &&
+  if (wkt['lat_ts'] == null &&
       wkt['lat1'] != null &&
       (wkt['projName'] == 'Stereographic_South_Pole' ||
           wkt['projName'] == 'Polar Stereographic (variant B)')) {
