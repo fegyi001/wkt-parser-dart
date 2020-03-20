@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.6 - 2020-03-20
+
+- Rename example file for dart pub to find it
+
+## 1.0.5 - 2020-03-20
+
+- Rename example file for dart pub to find it
+- Longer description for dart pub
+
 ## 1.0.4 - 2020-03-20
 
 - Fix in cleanWKT
