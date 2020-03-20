@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4 - 2020-03-20
+
+- Fix in cleanWKT
+
 ## 1.0.3 - 2020-03-04
 
 - Add missing params to ProjWKT
