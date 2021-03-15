@@ -14,9 +14,9 @@ class Parser {
   String text;
   int level;
   int place;
-  dynamic root;
+  List<dynamic> root;
   List<dynamic> stack;
-  dynamic currentObject;
+  List<dynamic> currentObject;
   int state;
   dynamic word;
 
@@ -27,11 +27,7 @@ class Parser {
         root = null,
         stack = [],
         currentObject = null,
-        state = NEUTRAL {
-    if (!(text is String)) {
-      throw Exception('Not a string: $text');
-    }
-  }
+        state = NEUTRAL;
 
   static List<dynamic> parseString(String txt) {
     var parser = Parser(txt);
@@ -173,7 +169,7 @@ class Parser {
     throw Exception('haven\'t handled "$char" in neutral yet, index $place');
   }
 
-  dynamic _output() {
+  List<dynamic> _output() {
     while (place < text.length) {
       _readCharacter();
     }

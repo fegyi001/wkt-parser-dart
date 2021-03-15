@@ -4,7 +4,7 @@ double _d2r(double input) {
   return input * _D2R;
 }
 
-void _rename(Map<dynamic, dynamic> obj, List<dynamic> params) {
+void _rename(Map<String, dynamic> obj, List<dynamic> params) {
   var outName = params[0];
   var inName = params[1];
   if (!(obj.containsKey(outName)) && (obj.containsKey(inName))) {
@@ -15,7 +15,7 @@ void _rename(Map<dynamic, dynamic> obj, List<dynamic> params) {
   }
 }
 
-void cleanWKT(Map<dynamic, dynamic> wkt) {
+void cleanWKT(Map<String, dynamic> wkt) {
   double _toMeter(double input) {
     var ratio = wkt['to_meter'] ?? 1.0;
     return input * ratio;
@@ -31,9 +31,8 @@ void cleanWKT(Map<dynamic, dynamic> wkt) {
     wkt['projName'] = 'identity';
     wkt['local'] = true;
   } else {
-    if (wkt['PROJECTION'] is Map<dynamic, dynamic>) {
-      wkt['projName'] =
-          (wkt['PROJECTION'] as Map<dynamic, dynamic>).keys.toList()[0];
+    if (wkt['PROJECTION'] is Map<String, dynamic>) {
+      wkt['projName'] = (wkt['PROJECTION'] as Map<String, dynamic>).keys.first;
     } else {
       wkt['projName'] = wkt['PROJECTION'];
     }
@@ -191,7 +190,7 @@ void cleanWKT(Map<dynamic, dynamic> wkt) {
     ['alpha', 'azimuth', _d2r],
     ['srsCode', 'name']
   ];
-  list.forEach((l) => _renamer(l));
+  list.forEach(_renamer);
   if (wkt['long0'] == null &&
       wkt['longc'] != null &&
       (wkt['projName'] == 'Albers_Conic_Equal_Area' ||

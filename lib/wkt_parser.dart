@@ -14,7 +14,7 @@ ProjWKT parseWKT(String wkt) {
   var name = lisp.removeAt(0).toString();
   lisp.insert(0, ['name', name]);
   lisp.insert(0, ['type', type]);
-  var obj = {};
+  var obj = <String, dynamic>{};
   process.sExpr(lisp, obj);
   clean_wkt.cleanWKT(obj);
   var wktObj = ProjWKT(obj);

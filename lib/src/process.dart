@@ -1,21 +1,21 @@
-Map<dynamic, dynamic> reduceFn(newObj, item) {
+Map<String, dynamic> reduceFn(Map<String, dynamic> newObj, dynamic item) {
   sExpr(item, newObj);
   return newObj;
 }
 
-void mapit(obj, key, List<dynamic> value) {
+void mapit(Map<String, dynamic> obj, dynamic key, List<dynamic> value) {
   if (key is List<dynamic>) {
     value.insert(0, key);
     key = null;
   }
-  var thing = key != null ? {} : obj;
+  var thing = key != null ? <String, dynamic>{} : obj;
   var out = value.fold(thing, (newObj, item) => reduceFn(newObj, item));
   if (key != null) {
     obj[key] = out;
   }
 }
 
-void sExpr(dynamic value, Map<dynamic, dynamic> obj) {
+void sExpr(dynamic value, Map<String, dynamic> obj) {
   if (!(value is List<dynamic>)) {
     obj[value] = true;
     return;
@@ -27,7 +27,7 @@ void sExpr(dynamic value, Map<dynamic, dynamic> obj) {
   }
   if (v.length == 1) {
     if (v[0] is List<dynamic>) {
-      obj[key] = {};
+      obj[key] = <String, dynamic>{};
       sExpr(v[0], obj[key]);
       return;
     }
@@ -44,16 +44,15 @@ void sExpr(dynamic value, Map<dynamic, dynamic> obj) {
   }
   if (key == 'AXIS') {
     if (!obj.containsKey(key)) {
-      obj[key] = [];
+      obj[key] = <List<dynamic>>[];
     }
     obj[key].add(v);
     return;
   }
   if (!(key is List<dynamic>)) {
-    obj[key] = {};
+    obj[key] = <String, dynamic>{};
   }
 
-  var i;
   switch (key) {
     case 'UNIT':
     case 'PRIMEM':
@@ -95,7 +94,7 @@ void sExpr(dynamic value, Map<dynamic, dynamic> obj) {
       mapit(obj, key, v);
       return;
     default:
-      i = -1;
+      var i = -1;
       while (++i < v.length) {
         if (!(v[i] is List<dynamic>)) {
           return sExpr(v, obj[key]);
