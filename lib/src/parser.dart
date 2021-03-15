@@ -14,9 +14,9 @@ class Parser {
   String text;
   int level;
   int place;
-  List<dynamic> root;
+  List<dynamic>? root;
   List<dynamic> stack;
-  List<dynamic> currentObject;
+  List<dynamic>? currentObject;
   int state;
   dynamic word;
 
@@ -25,7 +25,7 @@ class Parser {
         level = 0,
         place = 0,
         root = null,
-        stack = [],
+        stack = <dynamic>[],
         currentObject = null,
         state = NEUTRAL;
 
@@ -77,7 +77,7 @@ class Parser {
   void _afterItem(String char) {
     if (char == ',') {
       if (word != null) {
-        currentObject.add(word);
+        currentObject!.add(word);
       }
       word = null;
       state = NEUTRAL;
@@ -86,7 +86,7 @@ class Parser {
     if (char == ']') {
       level--;
       if (word != null) {
-        currentObject.add(word);
+        currentObject!.add(word);
         word = null;
       }
       state = NEUTRAL;
@@ -113,13 +113,13 @@ class Parser {
       return;
     }
     if (char == '[') {
-      var newObjects = [];
+      var newObjects = <dynamic>[];
       newObjects.add(word);
       level++;
       if (root == null) {
         root = newObjects;
       } else {
-        currentObject.add(newObjects);
+        currentObject!.add(newObjects);
       }
       stack.add(currentObject);
       currentObject = newObjects;
@@ -174,7 +174,7 @@ class Parser {
       _readCharacter();
     }
     if (state == ENDED) {
-      return root;
+      return root!;
     }
     throw Exception('unable to parse string $text. State is $state');
   }
