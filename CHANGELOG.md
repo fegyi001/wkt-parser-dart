@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0 - 2021-03-23
+
+- Stable null safety release
+- BREAKING CHANGE: `parseWKT` now returns `Map<String, dynamic>` instead of `Map<dynamic, dynamic>`
+
 ## 1.0.7 - 2020-03-20
 
 - Merge fix
