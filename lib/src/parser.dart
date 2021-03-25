@@ -14,9 +14,9 @@ class Parser {
   String text;
   int level;
   int place;
-  dynamic root;
+  List<dynamic>? root;
   List<dynamic> stack;
-  dynamic currentObject;
+  List<dynamic>? currentObject;
   int state;
   dynamic word;
 
@@ -25,13 +25,9 @@ class Parser {
         level = 0,
         place = 0,
         root = null,
-        stack = [],
+        stack = <dynamic>[],
         currentObject = null,
-        state = NEUTRAL {
-    if (!(text is String)) {
-      throw Exception('Not a string: $text');
-    }
-  }
+        state = NEUTRAL;
 
   static List<dynamic> parseString(String txt) {
     var parser = Parser(txt);
@@ -81,7 +77,7 @@ class Parser {
   void _afterItem(String char) {
     if (char == ',') {
       if (word != null) {
-        currentObject.add(word);
+        currentObject!.add(word);
       }
       word = null;
       state = NEUTRAL;
@@ -90,7 +86,7 @@ class Parser {
     if (char == ']') {
       level--;
       if (word != null) {
-        currentObject.add(word);
+        currentObject!.add(word);
         word = null;
       }
       state = NEUTRAL;
@@ -117,13 +113,13 @@ class Parser {
       return;
     }
     if (char == '[') {
-      var newObjects = [];
+      var newObjects = <dynamic>[];
       newObjects.add(word);
       level++;
       if (root == null) {
         root = newObjects;
       } else {
-        currentObject.add(newObjects);
+        currentObject!.add(newObjects);
       }
       stack.add(currentObject);
       currentObject = newObjects;
@@ -173,12 +169,12 @@ class Parser {
     throw Exception('haven\'t handled "$char" in neutral yet, index $place');
   }
 
-  dynamic _output() {
+  List<dynamic> _output() {
     while (place < text.length) {
       _readCharacter();
     }
     if (state == ENDED) {
-      return root;
+      return root!;
     }
     throw Exception('unable to parse string $text. State is $state');
   }

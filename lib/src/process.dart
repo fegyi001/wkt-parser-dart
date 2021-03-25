@@ -1,33 +1,34 @@
-Map<dynamic, dynamic> reduceFn(newObj, item) {
+Map<String, dynamic> reduceFn(Map<String, dynamic> newObj, dynamic item) {
   sExpr(item, newObj);
   return newObj;
 }
 
-void mapit(obj, key, List<dynamic> value) {
+void mapit(Map<String, dynamic> obj, dynamic key, List<dynamic> value) {
   if (key is List<dynamic>) {
     value.insert(0, key);
     key = null;
   }
-  var thing = key != null ? {} : obj;
-  var out = value.fold(thing, (newObj, item) => reduceFn(newObj, item));
+  var thing = key != null ? <String, dynamic>{} : obj;
+  var out = value.fold(
+      thing, (Map<String, dynamic> newObj, item) => reduceFn(newObj, item));
   if (key != null) {
     obj[key] = out;
   }
 }
 
-void sExpr(dynamic value, Map<dynamic, dynamic> obj) {
+void sExpr(dynamic value, Map<String, dynamic> obj) {
   if (!(value is List<dynamic>)) {
     obj[value] = true;
     return;
   }
-  var v = value as List<dynamic>;
+  var v = value;
   var key = v.removeAt(0);
   if (key == 'PARAMETER') {
     key = v.removeAt(0);
   }
   if (v.length == 1) {
     if (v[0] is List<dynamic>) {
-      obj[key] = {};
+      obj[key] = <String, dynamic>{};
       sExpr(v[0], obj[key]);
       return;
     }
@@ -44,28 +45,27 @@ void sExpr(dynamic value, Map<dynamic, dynamic> obj) {
   }
   if (key == 'AXIS') {
     if (!obj.containsKey(key)) {
-      obj[key] = [];
+      obj[key] = <List<dynamic>>[];
     }
     obj[key].add(v);
     return;
   }
   if (!(key is List<dynamic>)) {
-    obj[key] = {};
+    obj[key] = <String, dynamic>{};
   }
 
-  var i;
   switch (key) {
     case 'UNIT':
     case 'PRIMEM':
     case 'VERT_DATUM':
-      obj[key] = {'name': v[0].toLowerCase(), 'convert': v[1]};
+      obj[key] = <String, dynamic>{'name': v[0].toLowerCase(), 'convert': v[1]};
       if (v.length == 3) {
         sExpr(v[2], obj[key]);
       }
       return;
     case 'SPHEROID':
     case 'ELLIPSOID':
-      obj[key] = {'name': v[0], 'a': v[1], 'rf': v[2]};
+      obj[key] = <String, dynamic>{'name': v[0], 'a': v[1], 'rf': v[2]};
       if (v.length == 4) {
         sExpr(v[3], obj[key]);
       }
@@ -91,11 +91,11 @@ void sExpr(dynamic value, Map<dynamic, dynamic> obj) {
     case 'FITTED_CS':
     case 'LOCAL_DATUM':
     case 'DATUM':
-      v[0] = ['name', v[0]];
+      v[0] = <dynamic>['name', v[0]];
       mapit(obj, key, v);
       return;
     default:
-      i = -1;
+      var i = -1;
       while (++i < v.length) {
         if (!(v[i] is List<dynamic>)) {
           return sExpr(v, obj[key]);

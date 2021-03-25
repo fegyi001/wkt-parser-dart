@@ -1,6 +1,6 @@
 # WKT-PARSER-DART
 
-Wkt-parser-dart is the Dart version of [proj4js/wkt-parser](https://github.com/proj4js/wkt-parser) to convert a [WKT CRS](https://www.ogc.org/standards/wkt-crs) string into a `Map<dynamic, dynamic>` object.
+Wkt-parser-dart is the Dart version of [proj4js/wkt-parser](https://github.com/proj4js/wkt-parser) to convert a [WKT CRS](https://www.ogc.org/standards/wkt-crs) string into a `Map<String, dynamic>` object.
 
 ## Installing
 
@@ -13,7 +13,7 @@ dependencies:
 
 ## Using
 
-You can convert any **OGC WKT / ESRI WKT definition string** copied from [epsg.io](http://epsg.io/) into a `Map<dynamic,dynamic>` format which then can be further converted into JSON to be fully interoperable with any programming languages. This example uses the [OGC WKT of EPSG:23700](http://epsg.io/23700.wkt).
+You can convert any **OGC WKT / ESRI WKT definition string** copied from [epsg.io](http://epsg.io/) into a `Map<String,dynamic>` format which then can be further converted into JSON to be fully interoperable with any programming languages. This example uses the [OGC WKT of EPSG:23700](http://epsg.io/23700.wkt).
 
 ```dart
 import 'package:wkt_parser/wkt_parser.dart' as wkt_parser;

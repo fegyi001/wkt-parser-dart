@@ -1,13 +1,13 @@
 name: wkt_parser
 description: Wkt-parser is a Dart version of proj4js/wkt-parser. With wkt-parser you can parse a WKT projection string (OGC, ESRI) into json that proj4dart can consume.
-version: 1.0.7
+version: 2.0.0
 homepage: https://github.com/fegyi001/wkt-parser-dart
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 # dependencies:
 
 dev_dependencies:
-  pedantic: ^1.9.0
-  test: ^1.14.2
+  pedantic: ^1.11.0
+  test: ^1.16.8
